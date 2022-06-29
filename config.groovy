@@ -129,7 +129,7 @@ class Config {
 }
 
 def getFileContent(environment) {
-    js = new JsonSlurper()
+    js = new JsonSlurperClassic()
     String text = new File('config.json').getText()
     //json = js.parseText(('./config.json' as File).text)
     json = js.parseText(text)
