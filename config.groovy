@@ -127,17 +127,11 @@ class Config {
         return this        
     }
 }
-//@NonCPS
+
 def getFileContent(environment, text) {
-
     json = new JsonSlurperClassic().parseText(text)
-
-    //json = js.parseText(('./config.json' as File).text)
-    //json = js.parseText(text)
-    // println(json)
     config = new Config(json["common"]).Extend(json[environment.toLowerCase()])
-    File file = new File("./out.txt")
-//     return "hi"
+    //File file = new File("./out.txt")
 }
 
 return this
