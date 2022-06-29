@@ -64,7 +64,7 @@ class Queue {
     }
     @NonCPS
     def String toString() {
-        return String.format("QUEUE_HOST=%s\nQUEUE_PORT=%d\nQUEUE_EXCH=%s\nQUEUE_QUEUE=%s\nQUEUE_USER=%s\nQUEUE_PWD=%s\nQUEUE_NO_ACK=%d",
+        return String.format("QUEUE_HOST=%s\nQUEUE_PORT=%d\nQUEUE_EXCH=%s\nQUEUE_QUEUE=%s\nQUEUE_USER=%s\nQUEUE_PWD=%s\nQUEUE_NO_ACK=%s",
          this.host,
          this.port,
          this.exch,
