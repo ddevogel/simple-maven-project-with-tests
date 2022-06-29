@@ -2,6 +2,7 @@
   "common": {
     "database": {
       "name": "asdidata",
+      "user": "flightaware_www",      
       "sslmode": "require"
     },
     "queue": {
