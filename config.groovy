@@ -183,6 +183,7 @@ class Config {
             this.nuke.toString(),
             this.chargebee.toString(),              
           )
+    }
     
 @NonCPS
 def getFileContent(environment, text) {
