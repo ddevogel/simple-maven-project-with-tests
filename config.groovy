@@ -135,7 +135,11 @@ class Config {
 def getFileContent(environment, text) {
     json = new JsonSlurperClassic().parseText(text)
     println(json[environment.toLowerCase()])
-    config = new Config(json["common"])
+    try {
+        def config = new Config(json["common"])
+    } catch (Exception e) {
+        println(e.getMessage())
+    }
     //config = new Config(json["common"]).Extend(json[environment.toLowerCase()])
     //File file = new File("./out.txt")
     return "h"
