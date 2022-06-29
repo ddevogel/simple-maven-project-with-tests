@@ -65,7 +65,7 @@ class Queue {
         this.password = json.password ?: this.password
         this.no_ack = json.no_ack ?: this.no_ack
     }
-
+    @NonCPS
     def String toString() {
         return String.format("QUEUE_HOST=%s\nQUEUE_PORT=%d\nQUEUE_EXCH=%s\nQUEUE_QUEUE=%s\nQUEUE_USER=%s\nQUEUE_PWD=%s\nQUEUE_NO_ACK=%d",
          this.host,
@@ -95,6 +95,7 @@ class NukeSvc {
         this.url = json.url ?: this.url
         this.secret = json.secret ?: this.secret
     }
+    @NonCPS
     def String toString() {
         return String.format("NUKE_SVC_URL=%s\nNUKE_SVC_KEY=%s",
          this.url,
@@ -119,6 +120,7 @@ class Chargebee {
         this.site = json.site ?: this.site
         this.key = json.key ?: this.key
     }
+    @NonCPS
     def String toString() {
         return String.format('CHARGEBEE_SITE="%s"\nCHARGEBEE_FULL_ACCESS_KEY="%s"',
          this.site,
