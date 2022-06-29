@@ -44,7 +44,8 @@ class Queue {
     String exch
     String queue
     String user
-    String password   
+    String password 
+    Integer no_ack  
 
     Queue(json) {
         this.set(json)
