@@ -116,7 +116,7 @@ class Chargebee {
         this.key = json.key ?: this.key
     }
     def String toString() {
-        return String.format('CHARGEBEE_SITE="%s"\CHARGEBEE_FULL_ACCESS_KEY="%s"',
+        return String.format('CHARGEBEE_SITE="%s"\nCHARGEBEE_FULL_ACCESS_KEY="%s"',
          this.site,
          this.key
         )     
