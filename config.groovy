@@ -11,7 +11,7 @@ class Db {
         this.set(json)
     }
     @NonCPS
-    def Extend(json) {
+    def extend(json) {
         this.set(json)
     }
     @NonCPS
@@ -40,7 +40,7 @@ class Queue {
         this.set(json)
     }
     @NonCPS
-    def Extend(json) {
+    def extend(json) {
         this.set(json)
     }
     @NonCPS
@@ -62,7 +62,7 @@ class NukeSvc {
         this.set(json)
     }
     @NonCPS
-    def Extend(json) {
+    def extend(json) {
         this.set(json)
     }
     @NonCPS
@@ -80,7 +80,7 @@ class Chargebee {
         this.set(json)
     }
     @NonCPS
-    def Extend(json) {
+    def extend(json) {
         this.set(json)
     }
     @NonCPS
@@ -101,61 +101,68 @@ class Config {
         if (this.database == null) {
             this.database = new Db(json.database)
         } else {
-            this.database.Extend(json.database)
+            this.database.extend(json.database)
         }
         if (this.queue == null) {
             this.queue = new Queue(json.queue)
         } else {
-            this.queue.Extend(json.queue)
+            this.queue.extend(json.queue)
         }
         if (this.nuke == null) {
             this.nuke = new NukeSvc(json.nuke_svc)
         } else {
-            this.nuke.Extend(json.nuke_svc)
+            this.nuke.extend(json.nuke_svc)
         }        
         if (this.chargebee == null) {
             this.chargebee = new Chargebee(json.chargebee)
         } else {
-            this.chargebee.Extend(json.chargebee)     
+            this.chargebee.extend(json.chargebee)     
         }
     }
     @NonCPS
-    def Config Extend(json) {
+    def Config extend(json) {
         if (this.database == null) {
             this.database = new Db(json.database)
         } else {
-            this.database.Extend(json.database)
+            this.database.extend(json.database)
         }
         if (this.queue == null) {
             this.queue = new Queue(json.queue)
         } else {
-            this.queue.Extend(json.queue)
+            this.queue.extend(json.queue)
         }
         if (this.nuke == null) {
             this.nuke = new NukeSvc(json.nuke_svc)
         } else {
-            this.nuke.Extend(json.nuke_svc)
+            this.nuke.extend(json.nuke_svc)
         }        
         if (this.chargebee == null) {
             this.chargebee = new Chargebee(json.chargebee)
         } else {
-            this.chargebee.Extend(json.chargebee)
+            this.chargebee.extend(json.chargebee)
         }
         return this        
+    }
+    @NonCPS
+    def toString() {
+        return String.format("DATABASE_CONNECTION='host=%s user=%s dbname=%s password=%s sslmode=%s'", 
+                             this.database.host,
+                             this.database.name,
+                             this.database.user,
+                             this.database.password,
+                             this.database.sslmode
+                             )
+    
     }
 }
 @NonCPS
 def getFileContent(environment, text) {
     json = new JsonSlurperClassic().parseText(text)
-    println(json[environment.toLowerCase()])
-    try {
-        def config = new Config(json["common"])
-    } catch (Exception e) {
-        println(e.getMessage())
-    }
+    //println(json[environment.toLowerCase()])
+    def config = new Config(json["common"]).extend(json[environment.toLowerCase()])
     //config = new Config(json["common"]).Extend(json[environment.toLowerCase()])
     //File file = new File("./out.txt")
-    return "h"
+    return config.toString()
 }
 
 return this
