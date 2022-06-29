@@ -6,7 +6,7 @@ class Db {
     String user
     String password
     String sslmode
-    @NonCPS
+
     Db(json) {
         this.set(json)
     }
@@ -35,7 +35,7 @@ class Queue {
     String queue
     String user
     String password   
-    @NonCPS
+
     Queue(json) {
         this.set(json)
     }
@@ -57,7 +57,7 @@ class Queue {
 class NukeSvc {
     String url
     String secret
-    @NonCPS
+
     NukeSvc(json) {
         this.set(json)
     }
@@ -75,7 +75,7 @@ class NukeSvc {
 class Chargebee {
     String site
     String key
-    @NonCPS
+
     Chargebee(json) {
         this.set(json)
     }
@@ -95,7 +95,7 @@ class Config {
     Queue queue
     NukeSvc nuke
     Chargebee chargebee
-    @NonCPS
+
     Config(Object json) {
         //if (json == null) return null
         if (this.database == null) {
