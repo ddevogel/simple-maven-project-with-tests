@@ -130,6 +130,7 @@ class Config {
 
 def getFileContent(environment, text) {
     json = new JsonSlurperClassic().parseText(text)
+    println(json["common"])
     config = new Config(json["common"]).Extend(json[environment.toLowerCase()])
     //File file = new File("./out.txt")
 }
