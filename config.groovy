@@ -13,12 +13,16 @@ class Db{
         this.set(json)
     }
     def private set(json){
-        if(json == null) return
-        this.host = json.host ?: this.host
-        this.name = json.name ?: this.name
-        this.user = json.user ?: this.user
-        this.password = json.password ?: this.password
-        this.sslmode  = json.sslmode ?: this.sslmode        
+        try {
+            if(json == null) return
+            this.host = json.host ?: this.host
+            this.name = json.name ?: this.name
+            this.user = json.user ?: this.user
+            this.password = json.password ?: this.password
+            this.sslmode  = json.sslmode ?: this.sslmode
+        } catch(Exception e) {
+            println(ex.getMessage())
+        }
     }
 }
 class Queue {
