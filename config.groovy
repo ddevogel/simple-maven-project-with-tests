@@ -177,7 +177,7 @@ class Config {
     }
     @NonCPS
     def String toString() {
-        return String.format(%s\n%s\n%s\n%s\n,
+        return String.format("%s\n%s\n%s\n%s",
             this.database.toString(),
             this.queue.toString(),
             this.nuke.toString(),
