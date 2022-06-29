@@ -128,8 +128,8 @@ class Config {
     }
 }
 @NonCPS
-def getFileContent(environment) {
-    String text = new File('config.json').getText()
+def getFileContent(environment, text) {
+
     json = new JsonSlurperClassic().parseText(text)
 
     //json = js.parseText(('./config.json' as File).text)
