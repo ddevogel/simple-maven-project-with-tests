@@ -6,12 +6,15 @@ class Db {
     String user
     String password
     String sslmode
+    @NonCPS
     Db(json) {
         this.set(json)
     }
+    @NonCPS
     def Extend(json) {
         this.set(json)
     }
+    @NonCPS
     def private set(json) {
         try {
             if(json == null) return
@@ -32,12 +35,15 @@ class Queue {
     String queue
     String user
     String password   
+    @NonCPS
     Queue(json) {
         this.set(json)
     }
+    @NonCPS
     def Extend(json) {
         this.set(json)
     }
+    @NonCPS
     def private set(json) {
         if(json == null) return
         this.host = json.host ?: this.host
@@ -51,12 +57,15 @@ class Queue {
 class NukeSvc {
     String url
     String secret
+    @NonCPS
     NukeSvc(json) {
         this.set(json)
     }
+    @NonCPS
     def Extend(json) {
         this.set(json)
     }
+    @NonCPS
     def private set(json) {
         if(json == null) return        
         this.url = json.url ?: this.url
@@ -66,12 +75,15 @@ class NukeSvc {
 class Chargebee {
     String site
     String key
+    @NonCPS
     Chargebee(json) {
         this.set(json)
     }
+    @NonCPS
     def Extend(json) {
         this.set(json)
     }
+    @NonCPS
     def private set(json) {
         if(json == null) return        
         this.site = json.site ?: this.site
@@ -83,7 +95,7 @@ class Config {
     Queue queue
     NukeSvc nuke
     Chargebee chargebee
-
+    @NonCPS
     Config(Object json) {
         //if (json == null) return null
         if (this.database == null) {
@@ -107,6 +119,7 @@ class Config {
             this.chargebee.Extend(json.chargebee)     
         }
     }
+    @NonCPS
     def Config Extend(json) {
         if (this.database == null) {
             this.database = new Db(json.database)
@@ -131,7 +144,7 @@ class Config {
         return this        
     }
 }
-
+@NonCPS
 def getFileContent(environment, text) {
     json = new JsonSlurperClassic().parseText(text)
     println(json[environment.toLowerCase()])
