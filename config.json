@@ -8,7 +8,7 @@
     "queue": {
       "port": 5671,
       "user": "webhook",
-      "no_ack": 0
+      "no_ack": "0"
     }
   },
   "dev": {
