@@ -144,7 +144,7 @@ class Config {
         return this        
     }
     @NonCPS
-    def toString() {
+    def String toString() {
         return String.format("DATABASE_CONNECTION='host=%s user=%s dbname=%s password=%s sslmode=%s'", 
                              this.database.host,
                              this.database.name,
