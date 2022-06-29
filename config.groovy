@@ -129,8 +129,10 @@ class Config {
 }
 
 def getFileContent(environment) {
-    def js = new JsonSlurper()
-    json = js.parseText(('./config.json' as File).text)
+    js = new JsonSlurper()
+    String text = new File('config.json').getText()
+    //json = js.parseText(('./config.json' as File).text)
+    json = js.parseText(text)
     // println(json)
     config = Config(json["common"]).Extend(json[environment.toLowerCase()])
     File file = new File("./out.txt")
