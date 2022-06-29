@@ -1,18 +1,18 @@
 import groovy.json.JsonSlurperClassic
 
-class Db{
+class Db {
     String host
     String name
     String user
     String password
     String sslmode
-    Db(json){
+    Db(json) {
         this.set(json)
     }
-    def Extend(json){
+    def Extend(json) {
         this.set(json)
     }
-    def private set(json){
+    def private set(json) {
         try {
             if(json == null) return
             this.host = json.host ?: this.host
@@ -32,13 +32,13 @@ class Queue {
     String queue
     String user
     String password   
-    Queue(json){
+    Queue(json) {
         this.set(json)
     }
-    def Extend(json){
+    def Extend(json) {
         this.set(json)
     }
-    def private set(json){
+    def private set(json) {
         if(json == null) return
         this.host = json.host ?: this.host
         this.port = json.port ?: this.port
@@ -54,25 +54,25 @@ class NukeSvc {
     NukeSvc(json) {
         this.set(json)
     }
-    def Extend(json){
+    def Extend(json) {
         this.set(json)
     }
-    def private set(json){
+    def private set(json) {
         if(json == null) return        
         this.url = json.url ?: this.url
         this.secret = json.secret ?: this.secret
     }
 }
-class Chargebee{
+class Chargebee {
     String site
     String key
-    Chargebee(json){
+    Chargebee(json) {
         this.set(json)
     }
-    def Extend(json){
+    def Extend(json) {
         this.set(json)
     }
-    def private set(json){
+    def private set(json) {
         if(json == null) return        
         this.site = json.site ?: this.site
         this.key = json.key ?: this.key
@@ -86,44 +86,44 @@ class Config {
 
     Config(Object json) {
         //if (json == null) return null
-        if (this.database == null){
+        if (this.database == null) {
             this.database = new Db(json.database)
         } else {
             this.database.Extend(json.database)
         }
-        if (this.queue == null){
+        if (this.queue == null) {
             this.queue = new Queue(json.queue)
         } else {
             this.queue.Extend(json.queue)
         }
-        if (this.nuke == null){
+        if (this.nuke == null) {
             this.nuke = new NukeSvc(json.nuke_svc)
         } else {
             this.nuke.Extend(json.nuke_svc)
         }        
-        if (this.chargebee == null){
+        if (this.chargebee == null) {
             this.chargebee = new Chargebee(json.chargebee)
         } else {
             this.chargebee.Extend(json.chargebee)     
         }
     }
-    def Config Extend(json){
-        if (this.database == null){
+    def Config Extend(json) {
+        if (this.database == null) {
             this.database = new Db(json.database)
         } else {
             this.database.Extend(json.database)
         }
-        if (this.queue == null){
+        if (this.queue == null) {
             this.queue = new Queue(json.queue)
         } else {
             this.queue.Extend(json.queue)
         }
-        if (this.nuke == null){
+        if (this.nuke == null) {
             this.nuke = new NukeSvc(json.nuke_svc)
         } else {
             this.nuke.Extend(json.nuke_svc)
         }        
-        if (this.chargebee == null){
+        if (this.chargebee == null) {
             this.chargebee = new Chargebee(json.chargebee)
         } else {
             this.chargebee.Extend(json.chargebee)
