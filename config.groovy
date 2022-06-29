@@ -181,7 +181,7 @@ class Config {
             this.database.toString(),
             this.queue.toString(),
             this.nuke.toString(),
-            this.chargebee.toString(),              
+            this.chargebee.toString()              
           )
     }
     
