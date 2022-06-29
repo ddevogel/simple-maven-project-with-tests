@@ -135,7 +135,7 @@ def getFileContent(environment, text) {
     //json = js.parseText(('./config.json' as File).text)
     //json = js.parseText(text)
     // println(json)
-    config = Config(json["common"]).Extend(json[environment.toLowerCase()])
+    config = new Config(json["common"]).Extend(json[environment.toLowerCase()])
     File file = new File("./out.txt")
 //     return "hi"
 }
