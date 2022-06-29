@@ -74,6 +74,7 @@ class Queue {
          this.password,
          this.no_ack
         ) 
+    }
 }
 class NukeSvc {
     String url
@@ -96,7 +97,8 @@ class NukeSvc {
         return String.format("NUKE_SVC_URL=%s\nNUKE_SVC_KEY=%s",
          this.url,
          this.secret
-        )     
+        )    
+    } 
 }
 class Chargebee {
     String site
@@ -120,7 +122,7 @@ class Chargebee {
          this.site,
          this.key
         )     
-
+    }
 }
 class Config {
     Db database
