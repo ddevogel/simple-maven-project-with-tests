@@ -127,7 +127,7 @@ class Config {
         return this        
     }
 }
-@NonCPS
+//@NonCPS
 def getFileContent(environment, text) {
 
     json = new JsonSlurperClassic().parseText(text)
