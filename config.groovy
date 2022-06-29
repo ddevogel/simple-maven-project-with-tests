@@ -137,7 +137,7 @@ def getFileContent(environment, text) {
     println(json[environment.toLowerCase()])
     //config = new Config(json["common"]).Extend(json[environment.toLowerCase()])
     //File file = new File("./out.txt")
-    retrun "h"
+    return "h"
 }
 
 return this
