@@ -16,16 +16,12 @@ class Db {
     }
     @NonCPS
     def private set(json) {
-        try {
-            if(json == null) return
-            this.host = json.host ?: this.host
-            this.name = json.name ?: this.name
-            this.user = json.user ?: this.user
-            this.password = json.password ?: this.password
-            this.sslmode  = json.sslmode ?: this.sslmode
-        } catch(Exception e) {
-            println(ex.getMessage())
-        }
+        if(json == null) return
+        this.host = json.host ?: this.host
+        this.name = json.name ?: this.name
+        this.user = json.user ?: this.user
+        this.password = json.password ?: this.password
+        this.sslmode  = json.sslmode ?: this.sslmode
     }
     @NonCPS
     def String toString() {
@@ -56,6 +52,7 @@ class Queue {
     }
     @NonCPS
     def private set(json) {
+        println(json)
         if(json == null) return
         this.host = json.host ?: this.host
         this.port = json.port ?: this.port
@@ -67,7 +64,7 @@ class Queue {
     }
     @NonCPS
     def String toString() {
-        return String.format("QUEUE_HOST=%s\nQUEUE_PORT=%d\nQUEUE_EXCH=%s\nQUEUE_QUEUE=%s\nQUEUE_USER=%s\nQUEUE_PWD=%s\nQUEUE_NO_ACK=%s",
+        return String.format("QUEUE_HOST=%s\nQUEUE_PORT=%d\nQUEUE_EXCH=%s\nQUEUE_QUEUE=%s\nQUEUE_USER=%s\nQUEUE_PWD=%s\nQUEUE_NO_ACK=%d",
          this.host,
          this.port,
          this.exch,
