@@ -35,7 +35,8 @@ class Db {
          this.user,
          this.password,
          this.sslmode
-        )    
+        )  
+    }  
 }
 class Queue {
     String host
