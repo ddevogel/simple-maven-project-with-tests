@@ -184,6 +184,7 @@ class Config {
             this.chargebee.toString()              
           )
     }
+}
     
 @NonCPS
 def getFileContent(environment, text) {
