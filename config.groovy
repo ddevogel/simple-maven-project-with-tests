@@ -52,7 +52,7 @@ class Queue {
     }
     @NonCPS
     def private set(json) {
-        println(json)
+        println(json.no_ack)
         if(json == null) return
         this.host = json.host ?: this.host
         this.port = json.port ?: this.port
@@ -192,10 +192,7 @@ class Config {
 @NonCPS
 def getFileContent(environment, text) {
     json = new JsonSlurperClassic().parseText(text)
-    //println(json[environment.toLowerCase()])
     def config = new Config(json["common"]).extend(json[environment.toLowerCase()])
-    //config = new Config(json["common"]).Extend(json[environment.toLowerCase()])
-    //File file = new File("./out.txt")
     return config.toString()
 }
 
