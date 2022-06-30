@@ -60,7 +60,7 @@ class Queue {
         this.queue = json.queue ?: this.queue
         this.user  = json.user ?: this.user 
         this.password = json.password ?: this.password
-        this.no_ack = json.no_ack ?: this.no_ack
+        this.no_ack = json.no_ack
     }
     @NonCPS
     def String toString() {
