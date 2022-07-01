@@ -1,4 +1,4 @@
-import groovy.json.JsonSlurperClassicc
+import groovy.json.JsonSlurperClassic
 
 class Db {
     String host
