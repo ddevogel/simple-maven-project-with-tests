@@ -1,4 +1,4 @@
-import groovy.json.JsonSlurperClassic
+import groovy.json.JsonSlurper
 
 class Db {
     String host
@@ -52,7 +52,6 @@ class Queue {
     }
     @NonCPS
     def private set(json) {
-        println(json.no_ack)
         if(json == null) return
         this.host = json.host ?: this.host
         this.port = json.port ?: this.port
@@ -60,7 +59,7 @@ class Queue {
         this.queue = json.queue ?: this.queue
         this.user  = json.user ?: this.user 
         this.password = json.password ?: this.password
-        this.no_ack = json.no_ack
+        this.no_ack = (json.no_ack != null) ? json.no_ack : this.no_ack
     }
     @NonCPS
     def String toString() {
@@ -102,7 +101,7 @@ class NukeSvc {
 }
 class Chargebee {
     String site
-    String key
+    String api_key
 
     Chargebee(json) {
         this.set(json)
@@ -115,13 +114,13 @@ class Chargebee {
     def private set(json) {
         if(json == null) return        
         this.site = json.site ?: this.site
-        this.key = json.key ?: this.key
+        this.api_key = json.api_key ?: this.api_key
     }
     @NonCPS
     def String toString() {
-        return String.format('CHARGEBEE_SITE="%s"\nCHARGEBEE_FULL_ACCESS_KEY="%s"',
+        return String.format('CHARGEBEE_SITE=%s\nCHARGEBEE_FULL_ACCESS_KEY=%s',
          this.site,
-         this.key
+         this.api_key
         )     
     }
 }
@@ -190,21 +189,33 @@ class Config {
 }
     
 @NonCPS
-def getFileContent(environment, text) {
-    json = new JsonSlurperClassic().parseText(text)
-    def config = new Config(json["common"]).extend(json[environment.toLowerCase()])
-    return config.toString()
+def getFileContent(environment, text, secrets) {
+    slurper = new JsonSlurper()
+    json = slurper.parseText(text)
+    secrets = slurper.parseText(secrets)
+    println(secrets)
+    def config = new Config(json["common"]).extend(json[environment.toLowerCase()]).toString()
+        .replace("**db_pwd**", secrets.db_pwd)
+        .replace("**rmq_pwd**", secrets.rmq_pwd) 
+        .replace("**nuke_svc_key**", secrets.nuke_svc_key) 
+        .replace("**chargebee_key**", secrets.chargebee_key) 
+
+    return config
 }
 
-return this
+//return this
 
-// println(getConfig("dev")["database"]["name"])
-
-// def ys = new JsonSlurper()
-// def config = ys.parseText(('config.json' as File).text)
- // println(config).dev.database)
-// Config c = new Config(config["common"]).Extend(config["dev"])
-
-// println(c.database.name)
-// println(c.queue.port)
-// println(c.chargebee.site)
+/*
+To debug
+    - comment out @NonCPS everywhere
+    - comment out last "return this" above
+    - uncomment debug code below
+*/
+// def text  = new File("config.json").text
+// def secrets = """{
+// "db_pwd":"DBPWD",
+// "rmq_pwd":"RMQPWD",
+// "nuke_svc_key":"NUKEKEY",
+// "chargebee_key":"CBKEY"
+// }"""
+// println(getFileContent("Dev", text, secrets))
