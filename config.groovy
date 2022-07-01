@@ -203,7 +203,7 @@ def getFileContent(environment, text, secrets) {
     return config
 }
 
-//return this
+return this
 
 /*
 To debug
