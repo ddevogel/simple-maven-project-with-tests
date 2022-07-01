@@ -1,4 +1,4 @@
-import groovy.json.JsonSlurper
+import groovy.json.JsonSlurperClassicc
 
 class Db {
     String host
@@ -190,7 +190,7 @@ class Config {
     
 @NonCPS
 def getFileContent(environment, text, secrets) {
-    slurper = new JsonSlurper()
+    slurper = new JsonSlurperClassic()
     json = slurper.parseText(text)
     secrets = slurper.parseText(secrets)
     println(secrets)
