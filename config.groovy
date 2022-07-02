@@ -1,5 +1,5 @@
 import groovy.json.JsonSlurper
-import groovy.json.internal
+import groovy.json.internal.LazyMap
 
 class Db {
     String host
