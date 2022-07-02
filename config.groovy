@@ -190,9 +190,12 @@ class Config {
 
 @NonCPS
 def parseJsonText(String json) {
-    final slurper = new JsonSlurper()
+    slurper = new JsonSlurper()
     parsed = slurper.parseText(json)
-    return new HashMap<>(parsed)    
+    result = new HashMap<>(parsed) 
+    slurper = null
+    parsed = null
+    return result
 }  
 
 @NonCPS
