@@ -14,61 +14,61 @@
   "dev": {
     "database": {
       "host": "musiq.hou.flightaware.com",
-      "password": null
+      "password": "**db_pwd**"
     },
     "queue": {
       "host": "wolde.hou.flightaware.com",
       "exch": "chargebee_nonprod",
       "queue": "chargebee_dev",
-      "password": null
+      "password": "**rmq_pwd**"
     },
     "nuke_svc": {
       "url": "https://ddevogel-docker.flightaware.com/services/nucleus/aviator.rvt",
-      "secret": null
+      "secret": "**nuke_svc_key**"
     },
     "chargebee": {
       "site": "flightaware-test",
-      "api_key": null
+      "api_key": "**chargebee_key**"
     }
   },
   "sandbox": {
     "database": {
       "host": "musiq.hou.flightaware.com",
-      "password": null
+      "password": "**db_pwd**"
     },
     "queue": {
       "host": "wolde.hou.flightaware.com",
       "exch": "chargebee_nonprod",
       "queue": "chargebee_sandbox",
-      "password": null
+      "password": "**rmq_pwd**"
     },
     "nuke_svc": {
       "url": "https://ddevogel-docker.flightaware.com/services/nucleus/aviator.rvt",
-      "secret": null
+      "secret": "**nuke_svc_key**"
     },
     "chargebee": {
       "site": "flightaware-test",
-      "api_key": null
+      "api_key": "**chargebee_key**"
     }
   },
   "prod": {
     "database": {
       "host": "musiq.hou.flightaware.com",
-      "password": null
+      "password": "**db_pwd**"
     },
     "queue": {
       "host": "wolde.hou.flightaware.com",
       "exch": "chargebee_nonprod",
       "queue": "chargebee_sandbox",
-      "password": null
+      "password": "**rmq_pwd**"
     },
     "nuke_svc": {
       "url": "https://ddevogel-docker.flightaware.com/services/nucleus/aviator.rvt",
-      "secret": null
+      "secret": "**nuke_svc_key**"
     },
     "chargebee": {
       "site": "flightaware-test",
-      "api_key": null
+      "api_key": "**chargebee_key**"
     }
   }
 }
