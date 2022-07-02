@@ -194,7 +194,7 @@ def parseJsonText(String json) {
     return new HashMap<>(slurper.parseText(json))    
 }  
 
-@NonCPS
+//@NonCPS
 def String build(environment, text, secrets) {
     //slurper = new JsonSlurperClassic()
     json = parseJsonText(text)
