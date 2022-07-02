@@ -1,4 +1,5 @@
 import groovy.json.JsonSlurper
+import groovy.json.internal
 
 class Db {
     String host
