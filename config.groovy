@@ -189,7 +189,6 @@ class Config {
 }
 
 @NonCPS
-@CompileStatic
 static def convertLazyMapToLinkedHashMap(def value) {
     if (value instanceof LazyMap) {
       Map copy = [:]
