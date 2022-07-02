@@ -196,6 +196,7 @@ static def convertLazyMapToLinkedHashMap(def value) {
       for (pair in (value as LazyMap)) {
         copy[pair.key] = convertLazyMapToLinkedHashMap(pair.value)
       }
+      println("here")
       return copy
     } else {
       return value
@@ -206,7 +207,7 @@ static def convertLazyMapToLinkedHashMap(def value) {
 def parseJsonText(String json) {
     slurper = new JsonSlurper()
     parsed = slurper.parseText(json)
-    result = convertLazyMapToLinkedHashMap(new HashMap<>(parsed)) 
+    result = convertLazyMapToLinkedHashMap(parsed) 
     return result
 }  
 
