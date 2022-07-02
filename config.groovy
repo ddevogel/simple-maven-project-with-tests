@@ -189,12 +189,24 @@ class Config {
 }
 
 @NonCPS
+@CompileStatic
+static def convertLazyMapToLinkedHashMap(def value) {
+    if (value instanceof LazyMap) {
+      Map copy = [:]
+      for (pair in (value as LazyMap)) {
+        copy[pair.key] = convertLazyMapToLinkedHashMap(pair.value)
+      }
+      return copy
+    } else {
+      return value
+    }
+}
+
+@NonCPS
 def parseJsonText(String json) {
     slurper = new JsonSlurper()
     parsed = slurper.parseText(json)
-    result = new HashMap<>(parsed) 
-    slurper = null
-    parsed = null
+    result = convertLazyMapToLinkedHashMap(new HashMap<>(parsed)) 
     return result
 }  
 
