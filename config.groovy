@@ -1,4 +1,4 @@
-import groovy.json.JsonSlurperClassic
+import groovy.json.JsonSlurper
 
 class Db {
     String host
@@ -194,9 +194,9 @@ def parseJsonText(String json) {
     return new HashMap<>(slurper.parseText(json))    
 }  
 
-//@NonCPS
+@NonCPS
 def String build(environment, text, secrets) {
-    //slurper = new JsonSlurperClassic()
+    //slurper = new JsonSlurper()
     json = parseJsonText(text)
     _secrets = parseJsonText(secrets)
     println(_secrets)
