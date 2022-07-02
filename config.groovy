@@ -187,20 +187,26 @@ class Config {
           )
     }
 }
-    
-@NonCPS
-def getFileContent(environment, text, secrets) {
-    slurper = new JsonSlurperClassic()
-    json = slurper.parseText(text)
-    secrets = slurper.parseText(secrets)
-    println(secrets)
-    def config = new Config(json["common"]).extend(json[environment.toLowerCase()]).toString()
-        .replace("**db_pwd**", secrets.db_pwd)
-        .replace("**rmq_pwd**", secrets.rmq_pwd) 
-        .replace("**nuke_svc_key**", secrets.nuke_svc_key) 
-        .replace("**chargebee_key**", secrets.chargebee_key) 
 
-    return config
+@NonCPS
+def parseJsonText(String json) {
+    final slurper = new JsonSlurperClassic()
+    return new HashMap<>(slurper.parseText(json))    
+}  
+
+@NonCPS
+def String build(environment, text, secrets) {
+    //slurper = new JsonSlurperClassic()
+    json = parseJsonText(text)
+    _secrets = parseJsonText(secrets)
+    println(_secrets)
+    def config = new Config(json["common"]).extend(json[environment.toLowerCase()]).toString()
+        .replace("**db_pwd**", _secrets.db_pwd)
+        .replace("**rmq_pwd**", _secrets.rmq_pwd) 
+        .replace("**nuke_svc_key**", _secrets.nuke_svc_key) 
+        .replace("**chargebee_key**", _secrets.chargebee_key) 
+
+    return config.toString()
 }
 
 return this
@@ -218,4 +224,4 @@ To debug
 // "nuke_svc_key":"NUKEKEY",
 // "chargebee_key":"CBKEY"
 // }"""
-// println(getFileContent("Dev", text, secrets))
+// println(build("Dev", text, secrets))
