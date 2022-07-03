@@ -133,6 +133,7 @@ class Config {
     def Object secrets
 
     Config(Object json, secrets) {
+        this.hosts = []
         this.secrets = secrets
         this.set(json)
     }
