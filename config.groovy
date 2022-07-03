@@ -157,7 +157,7 @@ class Config {
     @NonCPS    
     def private set(json) {
         if (json.hosts != null) {
-            this.hosts = json.hosts
+            this.hosts += json.hosts
         } 
         if (this.database == null) {
             this.database = new Db(json.database)
