@@ -189,7 +189,7 @@ def parseJsonText(String json) {
     return result
 }  
 
-//@NonCPS
+@NonCPS
 def build(environment, text, secrets) {
     def jsonText = parseJsonText(text)
     def jsonSecrets = parseJsonText(secrets)
