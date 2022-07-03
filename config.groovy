@@ -10,11 +10,11 @@ class Db {
     Db(json) {
         this.set(json)
     }
-    //@NonCPS
+    @NonCPS
     def extend(json) {
         this.set(json)
     }
-    //@NonCPS
+    @NonCPS
     def private set(json) {
         if(json == null) return
         this.host = json.host ?: this.host
@@ -23,7 +23,7 @@ class Db {
         this.password = json.password ?: this.password
         this.sslmode  = json.sslmode ?: this.sslmode
     }
-    //@NonCPS
+    @NonCPS
     def String toString() {
         return String.format("DATABASE_CONNECTION='host=%s dbname=%s user=%s password=%s sslmode=%s'", 
          this.host,
@@ -46,11 +46,11 @@ class Queue {
     Queue(json) {
         this.set(json)
     }
-    //@NonCPS
+    @NonCPS
     def extend(json) {
         this.set(json)
     }
-    //@NonCPS
+    @NonCPS
     def private set(json) {
         if(json == null) return
         this.host = json.host ?: this.host
@@ -61,7 +61,7 @@ class Queue {
         this.password = json.password ?: this.password
         this.no_ack = (json.no_ack != null) ? json.no_ack : this.no_ack
     }
-    //@NonCPS
+    @NonCPS
     def String toString() {
         return String.format("QUEUE_HOST=%s\nQUEUE_PORT=%d\nQUEUE_EXCH=%s\nQUEUE_QUEUE=%s\nQUEUE_USER=%s\nQUEUE_PWD=%s\nQUEUE_NO_ACK=%d",
          this.host,
@@ -81,17 +81,17 @@ class NukeSvc {
     NukeSvc(json) {
         this.set(json)
     }
-    //@NonCPS
+    @NonCPS
     def extend(json) {
         this.set(json)
     }
-    //@NonCPS
+    @NonCPS
     def private set(json) {
         if(json == null) return        
         this.url = json.url ?: this.url
         this.secret = json.secret ?: this.secret
     }
-    //@NonCPS
+    @NonCPS
     def String toString() {
         return String.format("NUKE_SVC_URL=%s\nNUKE_SVC_KEY=%s",
          this.url,
@@ -106,17 +106,17 @@ class Chargebee {
     Chargebee(json) {
         this.set(json)
     }
-    //@NonCPS
+    @NonCPS
     def extend(json) {
         this.set(json)
     }
-    //@NonCPS
+    @NonCPS
     def private set(json) {
         if(json == null) return        
         this.site = json.site ?: this.site
         this.api_key = json.api_key ?: this.api_key
     }
-    //@NonCPS
+    @NonCPS
     def String toString() {
         return String.format('CHARGEBEE_SITE=%s\nCHARGEBEE_FULL_ACCESS_KEY=%s',
          this.site,
@@ -136,7 +136,7 @@ class Config {
         this.secrets = secrets
         this.set(json)
     }
-    //@NonCPS
+    @NonCPS
     def Config extend(json) {
         this.set(json)
         return this        
@@ -178,7 +178,7 @@ class Config {
             this.chargebee.extend(json.chargebee)
         }
     }
-    //@NonCPS
+
 
 }
 
