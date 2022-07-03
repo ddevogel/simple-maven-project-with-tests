@@ -12,6 +12,7 @@
     }
   },
   "dev": {
+    "hosts": ["dev_host"],
     "database": {
       "host": "musiq.hou.flightaware.com",
       "password": "**db_pwd**"
@@ -32,6 +33,7 @@
     }
   },
   "sandbox": {
+    "hosts": ["sb_host"],
     "database": {
       "host": "musiq.hou.flightaware.com",
       "password": "**db_pwd**"
@@ -52,6 +54,7 @@
     }
   },
   "prod": {
+    "hosts": ["prod_host"],
     "database": {
       "host": "musiq.hou.flightaware.com",
       "password": "**db_pwd**"
