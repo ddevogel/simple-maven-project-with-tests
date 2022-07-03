@@ -182,7 +182,7 @@ class Config {
 
 }
 
-//@NonCPS
+@NonCPS
 def parseJsonText(String json) {
     def slurper = new JsonSlurper()
     def result = new HashMap<>(slurper.parseText(json))    
