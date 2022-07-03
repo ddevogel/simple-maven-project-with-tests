@@ -141,6 +141,7 @@ class Config {
         this.set(json)
         return this        
     }
+    @NonCPS
     def String getFileContent() {
         return String.format("%s\n%s\n%s\n%s",
             this.database.toString(),
@@ -153,6 +154,7 @@ class Config {
         .replace("**nuke_svc_key**", this.secrets.nuke_svc_key) 
         .replace("**chargebee_key**", this.secrets.chargebee_key) 
     }
+    @NonCPS    
     def private set(json) {
         if (json.hosts != null) {
             this.hosts = json.hosts
