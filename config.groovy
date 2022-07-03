@@ -1,5 +1,4 @@
 import groovy.json.JsonSlurper
-import groovy.json.internal.LazyMap
 
 class Db {
     String host
@@ -189,33 +188,31 @@ class Config {
     }
 }
 
-@NonCPS
-static def convertLazyMapToLinkedHashMap(def value) {
-    if (value instanceof LazyMap) {
-      Map copy = [:]
-      for (pair in (value as LazyMap)) {
-        copy[pair.key] = convertLazyMapToLinkedHashMap(pair.value)
-      }
-      println("here")
-      return copy
-    } else {
-      return value
-    }
-}
+// @NonCPS
+// static def convertLazyMapToLinkedHashMap(def value) {
+//     if (value instanceof LazyMap) {
+//       Map copy = [:]
+//       for (pair in (value as LazyMap)) {
+//         copy[pair.key] = convertLazyMapToLinkedHashMap(pair.value)
+//       }
+//       println("here")
+//       return copy
+//     } else {
+//       return value
+//     }
+// }
 
 @NonCPS
 def parseJsonText(String json) {
-    slurper = new JsonSlurper()
-    parsed = slurper.parseText(json)
-    result = convertLazyMapToLinkedHashMap(parsed) 
-    return result
+    def slurper = new JsonSlurper()
+    def parsed = new HashMap<>(slurper.parseText(json))
+    return parsed
 }  
 
 @NonCPS
 def String build(environment, text, secrets) {
-    //slurper = new JsonSlurper()
-    json = parseJsonText(text)
-    _secrets = parseJsonText(secrets)
+    def json = parseJsonText(text)
+    def _secrets = parseJsonText(secrets)
     println(_secrets)
     def config = new Config(json["common"]).extend(json[environment.toLowerCase()]).toString()
         .replace("**db_pwd**", _secrets.db_pwd)
